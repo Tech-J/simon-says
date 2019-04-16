@@ -10,21 +10,53 @@
     display: grid;
     grid-template-columns: repeat(2,300px);
     grid-template-rows: repeat(2,300px);
+    grid-gap: 10px;
 }
 
 .gamePieces{
     border:5px solid grey;
+    transition:1s;
+    opacity: .5;
+}
+
+.gamePiece1{
+    border-top-left-radius: 50%;
+}
+
+.gamePiece2{
+    border-top-right-radius: 50%;
+}
+
+.gamePiece3{
+    border-bottom-left-radius: 50%;
+}
+
+.gamePiece4{
+    border-bottom-right-radius: 50%;
 }
 
 .yellow{
     background-color: yellow;
 }
+
 .red{
     background-color: red;
 }
+
 .green{
     background-color: green;
 }
+
 .blue{
     background-color: blue;
+}
+
+.show{
+   animation: show 2s infinite;
+}
+
+@keyframes show{
+    to{
+        opacity: 1;
+    }
 }

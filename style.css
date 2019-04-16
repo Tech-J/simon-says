@@ -7,10 +7,9 @@
 }
 
 .gameContainer{
-    width: 50%;
-    height: 50%;
     display: grid;
-    grid-auto-columns: repeat(auto-fit, minmax(100px,200px))
+    grid-template-columns: repeat(2,300px);
+    grid-template-rows: repeat(2,300px);
 }
 
 .gamePieces{

@@ -35,24 +35,24 @@
     border-bottom-right-radius: 50%;
 }
 
-.yellow{
+#yellow{
     background-color: yellow;
 }
 
-.red{
+#red{
     background-color: red;
 }
 
-.green{
+#green{
     background-color: green;
 }
 
-.blue{
+#blue{
     background-color: blue;
 }
 
 .show{
-   animation: show 2s infinite;
+   animation: show 1s;
 }
 
 @keyframes show{
@@ -60,3 +60,11 @@
         opacity: 1;
     }
 }
+
+.animation1{
+    animation-delay: 1s;
+} 
+
+.animation2{
+    animation-delay: 2s;
+} 

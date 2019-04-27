@@ -8,8 +8,15 @@
     <title>Document</title>
 </head>
 <body>
-    
     <section class="container">
+        <header class="gameInfo">
+            <h1>Simon Says</h1>
+            <p id="name"></p>
+            <p id="score">0</p>
+            <label>Enter Your Name</label>
+            <input type="text" name="" id="nameField" required>
+            <input type="button" value="Click" id="gameStart">
+        </header>
         <section class="gameContainer">
             <section class="gamePieces gamePiece1" id=yellow></section>
             <section class="gamePieces gamePiece2" id=red></section>
@@ -18,7 +25,8 @@
         </section>
 
     </section>
-
+    <audio id="losingSound"src="tolling-bell.wav"></audio>
+    <script src="artyom.window.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -44,7 +44,6 @@ function recordSelections(event){
 
 function randomSelection(){
     game.streakArr.push(game.pieceColors[Math.floor(Math.random()*game.pieceColors.length)]);
-   console.log(game.streakArr);
     game.streakArrCopy = [...game.streakArr];
     game.decisionArr = [...game.streakArr];
     randomSelectionShow()
@@ -66,6 +65,13 @@ function gameOver(){
     let losingAudio = document.getElementById('losingSound')
     losingAudio.play()
     eventHandler('remove')
+    emptyArr()
+}
+
+function emptyArr(){
+    game.streakArr.splice(0,game.streakArr.length)
+    game.streakArrCopy.splice(0,game.streakArr.length)
+    game.decisionArr.splice(0,game.streakArr.length)
 }
 
 function scoreFunc(){
@@ -75,6 +81,7 @@ function scoreFunc(){
 }
 
 function start(){
+
     randomSelection()
     eventHandler('add')
 }

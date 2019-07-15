@@ -55,9 +55,9 @@ function randomSelectionShow(){
         el.classList.add('show');
         // Jarvis.say(game.streakArrCopy[0]);
         game.streakArrCopy.shift();
-        setTimeout(()=>{el.classList.remove('show')},(750/(game.streakArr.length)));
+        setTimeout(()=>{el.classList.remove('show')},(1000/(game.streakArr.length)));
         game.streakArrCopy.length!==0 ? randomSelectionShow() : null;
-    },750)
+    },1000)
 }
 
 function gameOver(){
@@ -82,7 +82,6 @@ function scoreFunc(){
 
 
 function start(){
-    game.score=0;
     randomSelection()
     eventHandler('add')
 }

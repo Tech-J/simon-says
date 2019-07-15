@@ -6,7 +6,7 @@ body{
     width: 100vw;
     overflow: hidden;
     margin: 0px;
-    background-color: black;
+    background-color:#101010;
 }
 
 .gameContainer{
@@ -36,12 +36,9 @@ body{
     color:white;
 }
 
-.item1>input{
+.item1>input[type="button"] {
     height: 30px;
     box-shadow: 2px 2px 2px 2px;
-}
-
-.item1>input[type="button"] {
     width:30%;
     background-color:cornflowerblue;
 }
@@ -52,12 +49,12 @@ body{
     grid-template-areas: 
     'pieceOne pieceTwo'
     'pieceThree pieceFour';
-    grid-gap: 10px;
+    grid-gap: 20px;
 }
 
 .gamePieces{
     min-height: 125px;
-    opacity: .75;
+    opacity: .25;
 }
 
 .gamePiece1{
@@ -109,14 +106,7 @@ body{
 
 @media only screen and (min-width:720px){
     .gameContainer{
-        height: 80vh;
-        width: 80vw;
-    }
-}
-
-@media only screen and (min-width:720px){
-    .gameContainer{
-        height: 75vh;
+        height: 85vh;
         width: 75vw;
     }
 }

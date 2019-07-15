@@ -1,91 +1,88 @@
-var gamePieceColors= ["yellow","red","blue","green"]
-var streakArr=[];
-var streakArrCopy=[];
-var decisionArr=[];
-var timer
-var score = 0
+let game ={
+    pieceColors:["yellow","red","blue","green"],
+    streakArr:[],
+    streakArrCopy:[],
+    decisionArr:[],
+    timer:null,
+    score:0,
+}
 
-var Jarvis = new Artyom();
+function eventHandler(decision){
+    let gamePiecesEl = document.querySelectorAll('.gamePieces')
+    if(decision === 'add' ){
+        addEvent(gamePiecesEl)
+    }
+    else{
+        removeEvent(gamePiecesEl)
+    }
+}
 
-
-function eventHandler(){
-    var gamePiecesEl = document.querySelectorAll('.gamePieces')
-    gamePiecesEl.forEach(element => {
+function addEvent (el){
+    el.forEach(element => {
         element.addEventListener('click',recordSelections)
     });
 }
 
-function removeEventHandler(){
-    var gamePiecesEl = document.querySelectorAll('.gamePieces')
-    gamePiecesEl.forEach(element => {
+function removeEvent(el){
+   el.forEach(element => {
         element.removeEventListener('click',recordSelections)
     });
 }
 
-function inputHandler(){
-    var nameInput = document.getElementById('nameField');
-    var nameOutput = document.getElementById('name')
-    nameInput.addEventListener('input',(event)=>{
-        console.log('event')
-        nameOutput.innerHTML=event.target.value
-    })
-}
-
-
-
 function recordSelections(event){
-    if(event.target.id === decisionArr[0]){ 
-        decisionArr.shift() 
+    let correctAudio = document.getElementById('correctSound')
+    if(event.target.id === game.decisionArr[0]){ 
+        correctAudio.play()
+        game.decisionArr.shift() 
         scoreFunc()
-        decisionArr.length === 0 ? randomSelection(): console.log('hi')
-       
+        game.decisionArr.length === 0 ? randomSelection(): null
     } 
     else{
-        clearInterval(timer)
         gameOver()
     }
 }
 
 function randomSelection(){
-    streakArr.push(gamePieceColors[Math.floor(Math.random()*gamePieceColors.length)]);
-    streakArrCopy = [...streakArr];
-    decisionArr = [...streakArr];
+    game.streakArr.push(game.pieceColors[Math.floor(Math.random()*game.pieceColors.length)]);
+   console.log(game.streakArr);
+    game.streakArrCopy = [...game.streakArr];
+    game.decisionArr = [...game.streakArr];
     randomSelectionShow()
 }
 
 function randomSelectionShow(){
-    timer = setTimeout(()=>{
-        var el = document.getElementById(streakArrCopy[0]);
+    game.timer = setTimeout(()=>{
+        let el = document.getElementById(game.streakArrCopy[0]);
         el.classList.add('show');
-        // Jarvis.say(streakArrCopy[0]);
-        streakArrCopy.shift();
-        setTimeout(()=>{el.classList.remove('show')},(1000/(streakArr.length)));
-        streakArrCopy.length!==0 ? randomSelectionShow() : console.log('no')
-    },1000)
+        // Jarvis.say(game.streakArrCopy[0]);
+        game.streakArrCopy.shift();
+        setTimeout(()=>{el.classList.remove('show')},(750/(game.streakArr.length)));
+        game.streakArrCopy.length!==0 ? randomSelectionShow() : null;
+    },750)
 }
 
-
 function gameOver(){
-    removeEventHandler()
-    losingAudio = document.getElementById('losingSound')
+    clearInterval(game.timer)
+    let losingAudio = document.getElementById('losingSound')
     losingAudio.play()
+    eventHandler('remove')
 }
 
 function scoreFunc(){
-    score++;
-    var nameEl = document.getElementById('score');
-    nameEl.innerHTML=score;
+    game.score++;
+    let nameEl = document.getElementById('score');
+    nameEl.innerHTML=game.score;
 }
-
 
 function start(){
-    inputHandler()
     randomSelection()
-    eventHandler()
-    Jarvis.say(streakArrCopy[0]);
-}start()
+    eventHandler('add')
+}
 
 function btnStart(){
-    var btn =  document.getElementById('gameStart')
+    let btn =  document.getElementById('gameStart')
     btn.addEventListener('click',start) 
 }
+btnStart()
+
+

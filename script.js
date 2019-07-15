@@ -80,8 +80,9 @@ function scoreFunc(){
     nameEl.innerHTML=game.score;
 }
 
-function start(){
 
+function start(){
+    game.score=0;
     randomSelection()
     eventHandler('add')
 }
